@@ -1,8 +1,9 @@
 
 
 # Valid Level Range
-MIN_LEVEL = 1
-MAX_LEVEL = 60
+MIN_LEVEL       =   1
+MAX_LEVEL       =   60
+MAX_DISP_LEVEL  =   20
 
 # Difficulty Mode Multiplier
 DIFF_MOD_EASY   =   2/3
@@ -40,3 +41,6 @@ def validate_level_range(start_lvl, end_lvl):
     if(end_lvl <= start_lvl):
         return FAILURE
     return SUCCESS
+
+def convertToInternalLevel(tier, disp_lvl):
+    return (tier*20) + disp_lvl
