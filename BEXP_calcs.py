@@ -19,6 +19,10 @@ SUCCESS         =   0
 FAILURE         =   1
 INVALID_LVLS    =  -1
 
+# Misc Constants
+AUDIO_ON        =   1
+AUDIO_OFF       =   0
+
 # Calculate BEXP Requirements to go from level to level
 def calc_bexp_cost(start_lvl, end_lvl, lvl_mod, diff_mod):
     # Check that level selection was valid

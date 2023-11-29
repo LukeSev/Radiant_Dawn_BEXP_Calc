@@ -9,9 +9,9 @@ class MusicPlayer():
         self.player.setAudioOutput(self.audio_output)
         self.player.setSource(QUrl.fromLocalFile(music_loc))
 
-    def play_BGM(self, volume, num_loops):
+    def play_BGM(self):
         # Volume ranges from 0 to 1 and is proportion of base volume
         # Fades audio in and out
-        self.player.setLoops(num_loops)
-        self.audio_output.setVolume(volume)
+        self.player.setLoops(BGM_LOOPS)
+        self.audio_output.setVolume(BGM_VOL)
         self.player.play()

@@ -8,10 +8,31 @@ def create_label(text, alignment, font, size):
     label.setAlignment(alignment)
     return label
 
+class Welcome_Dialog(QDialog):
+    def __init__(self, welcome_msg):
+        super().__init__()
+        layout = QGridLayout()
+
+        # Create welcome message
+        self.label = QLabel()
+        self.label.setText(welcome_msg)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        layout.addWidget(self.label, 0, 0, 1, 4)
+
+        # Create confirmation button
+        startBtn = QPushButton("Get Started")
+        startBtn.clicked.connect(self.close)
+        layout.addWidget(startBtn, 1, 1, 1, 2)
+
+        self.setLayout(layout)
+        self.setWindowTitle("Welcome")
+
 class BEXP_Window(QMainWindow):
     def __init__(self):
         super().__init__()
         self.initUI()
+        self.welcome_dlg = Welcome_Dialog(WELCOME)
+        self.initTimer()
 
     def initUI(self):
         # Initialize window and basic layout
@@ -46,6 +67,10 @@ class BEXP_Window(QMainWindow):
 
         # Create Difficulty Mode Options
         difficultyOptions = QHBoxLayout()
+
+        diffLbl = create_label("Difficulty:", LEFT, LBL_FONT, LBL_SIZE)
+        difficultyOptions.addWidget(diffLbl)
+
         self.radio = QRadioButton("Easy", self)
         self.radio.toggled.connect(self.updateDifficulty)
         difficultyOptions.addWidget(self.radio)
@@ -64,12 +89,17 @@ class BEXP_Window(QMainWindow):
         self.laguzCheck = QCheckBox(text="Laguz?")
         difficultyOptions.addWidget(self.laguzCheck)
 
+        # Check box to mute/unmute audio
+        self.muteBox = QCheckBox(text="Mute Audio")
+        self.muteBox.pressed.connect(self.updateAudio)
+        difficultyOptions.addWidget(self.muteBox)
+
         self.generalLayout.addLayout(difficultyOptions)
 
         # Button to Calculate Final Bexp Cost
         calcBtn = QPushButton(text="Calculate Total BEXP Cost")
         calcBtn.clicked.connect(self.displayBexpCost)
-        self.generalLayout.addWidget(calcBtn)
+        self.generalLayout.addWidget(calcBtn, 10)
 
         self.bexpCostDisplay = QHBoxLayout()
         self.bexpCostLbl = create_label("TOTAL BEXP COST:", RIGHT, TITLE_FONT, HEADING_SZ)
@@ -83,7 +113,12 @@ class BEXP_Window(QMainWindow):
 
         # self.center()
         self.show()
-        self.music_player.play_BGM(BGM_VOL, BGM_LOOPS)
+        # self.music_player.play_BGM(BGM_VOL, BGM_LOOPS)
+
+    def initTimer(self):
+        # Creates single-shot delay for welcome message
+        QTimer.singleShot(DELAY, self.welcome_dlg.exec)
+        QTimer.singleShot(DELAY, self.music_player.play_BGM)
 
     def updateStartLvlTier(self):
         match self.sender().text():
@@ -136,3 +171,9 @@ class BEXP_Window(QMainWindow):
         tierDropdown.addItem("Tier "+str(2))
         tierDropdown.addItem("Tier "+str(3))
         return tierDropdown
+    
+    def updateAudio(self):
+        if(self.muteBox.isChecked()):
+            self.music_player.audio_output.setVolume(BGM_VOL)
+        else:
+            self.music_player.audio_output.setVolume(0)

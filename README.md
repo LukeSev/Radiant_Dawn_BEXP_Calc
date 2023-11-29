@@ -34,4 +34,4 @@ Option 2: Run as a Python Program
 # Future/Planned Features #
 - Better-looking UI
 - Option to give how much BEXP you have and calculate how many levels you can get on a unit, given a particular starting level
-- Welcome Dialog that launches on startup & explains how the program works
+- ~~Welcome Dialog that launches on startup & explains how the program works~~

@@ -102,7 +102,7 @@ SON     =   0
 DGHTR   =   1
 
 # Misc Constants
-DELAY   =   750     # ms
+DELAY   =   500     # ms
 
 # Error Messages
 PARENT_ERROR    =   "ERROR: Invalid Parent Combination"
@@ -110,10 +110,9 @@ STAT_ERROR      =   "ERROR: Invalid Stat Selection(s)"
 LVL_ERROR       =   "ERROR: Invalid Level Selection(s)"
 
 # Dialog Messages
-WELCOME         =   """ Welcome to the FE4 Inheritance Calculator!
-This program lets you calculate the starting stats of the children for any (valid) pairing in FE4! 
-You can either manually input your units' stats or use their average stats at a given level. 
-You can also choose to just view the Growth Rates for the child(ren) if you want. 
+WELCOME         =   """ Welcome to the FE10 BEXP Cost Calculator!
+This program lets you calculate the total BEXP Cost for any (valid) pair of starting and ending levels! 
+Apart from level range, you can also set difficulty, if they're laguz, and even mute the BGM if you want!
 I hope you enjoy!"""
 
 LVL_PROMPT      =   "Enter Level for which average stats will be calculated"
