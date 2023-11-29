@@ -22,6 +22,7 @@ from PyQt6.QtWidgets import (
     QSpacerItem,
     QRadioButton,
     QCheckBox,
+    QStackedWidget,
 )
 from PyQt6 import (
     QtGui, 
@@ -50,7 +51,7 @@ from BEXP_calcs import *
 # Various Constant Definitions
 # Dimensions
 WIDTH       =   600
-HEIGHT      =   150
+HEIGHT      =   160
 LINE_WIDTH  =   1
 IMG_WIDTH   =   int(0.4*WIDTH)
 IMG_HEIGHT  =   int(0.25*HEIGHT)
@@ -72,6 +73,9 @@ RIGHT   =   Qt.AlignmentFlag.AlignRight
 # Colors for various buttons/fields
 LTBLUE  =   "#b8e0f5"
 LTTAN   =   "#faf2cd"
+LTGRAY  =   "#E6E6E6"
+BEXP_G  =   "#02F902"
+DARK_G  =   "02DB02"
 
 # Colors to be passed to QtQui.Color(R,G,B)
 COL_LTGRAY      =   (212,212,212)
@@ -86,38 +90,25 @@ BGM             =   'Resources/BGM.mp3'
 BGM_VOL         =   0.1
 BGM_LOOPS       =   -1      # Infinite Loops
 
-# Images
+# Misc File Path Stuff
 APP_ICON        =   'Resources/AppIcon.png'
-
-# Mode for button event handling
-MODE_STATS      =   0
-MODE_GROWTHS    =   1
-MODE_BOTH       =   2
-
-# For indexing into arrays
-MOTHER  =   0
-FATHER  =   1
-
-LEVEL   =   0
-PROMO   =   0
-STATS   =   1
-
-SON     =   0
-DGHTR   =   1
+D0              =   'nothingtoseehere'
+D1              =   'noneofyourbusiness'
+D2              =   'turnaroundnow'
+D3              =   'lastchance'
+D4              =   'dontsayididntwarnyou'
+D5              =   'hereitis'
+BACKUP          =   f'Resources/{D0}/{D1}/{D2}/{D3}/{D4}/{D5}/secret.mp3'
 
 # Misc Constants
-DELAY   =   500     # ms
+DELAY           =   500     # ms
+ODDS_OF_FUN     =   25      # The odds of having fun
 
 # Error Messages
-PARENT_ERROR    =   "ERROR: Invalid Parent Combination"
-STAT_ERROR      =   "ERROR: Invalid Stat Selection(s)"
-LVL_ERROR       =   "ERROR: Invalid Level Selection(s)"
+
 
 # Dialog Messages
 WELCOME         =   """ Welcome to the FE10 BEXP Cost Calculator!
 This program lets you calculate the total BEXP Cost for any (valid) pair of starting and ending levels! 
 Apart from level range, you can also set difficulty, if they're laguz, and even mute the BGM if you want!
 I hope you enjoy!"""
-
-LVL_PROMPT      =   "Enter Level for which average stats will be calculated"
-AVG_STAT_BTN    =   "Calculate Average Stats"
