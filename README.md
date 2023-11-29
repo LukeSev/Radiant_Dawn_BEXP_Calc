@@ -2,11 +2,11 @@
 This is a tool to help you calculate BEXP level-up costs in Fire Emblem: Radiant Dawn.
 
 In Radiant Dawn, BEXP (Bonus EXP) is earned in various ways throughout the game. BEXP can be a very important tool in powering up your units and the BEXP required to level up a particular units depends on a number of factors, namely: 
-- Difficulty
+- Difficulty Mode
 - Total Level (accounting for Promotion Tier)
 - Race (Laguz or Beorc)
 
-While it's fairly easy to notice that these various factors exist and impoact total cost, the exact impact is never explicitly communicated to the player. This is where the BEXP Calculator comes in, allowing you to calculate BEXP costs for any given level while accounting for these various factors. This allows you to plan out BEXP usage in advance without actually needing to have the BEXP and unit in front of you in the game to find out. This is really helpful in planning out BEXP dumps in advance, and was the main motivation for me to create this in the first place (for example, I wanted to get Laura to a L3 Saint by 3-13 so she could ORKO Ike with Purge and wanted to know if BEXPing her from L1 Bishop to L10 Bishop for promo, and then from L1 Saint to L3 Saint, would be viable).
+While it's fairly easy to notice that these various factors exist and affect total cost, the exact impact is never explicitly communicated to the player. This is where the BEXP Calculator comes in, allowing you to calculate BEXP costs for any given level while accounting for these various factors. This allows you to plan out BEXP usage in advance without actually needing to have the BEXP and unit in front of you in the game to find out. This is really helpful in planning out BEXP dumps in advance, and was the main motivation for me to create this in the first place (for example, I wanted to get Laura to a L3 Saint by 3-13 so she could ORKO Ike with Purge and wanted to know if BEXPing her from L1 Bishop to L10 Bishop for promo, and then from L1 Saint to L3 Saint, would be viable).
 
 # Current Features #
 - Find BEXP cost for any valid starting Tier/Level and ending Tier/Level
