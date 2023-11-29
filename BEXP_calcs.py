@@ -32,8 +32,8 @@ def calc_bexp_cost(start_lvl, end_lvl, lvl_mod, diff_mod):
     # Calculate total BEXP cost by summing BEXP cost at each level
     total = 0
     for lvl in range(start_lvl, end_lvl):
-        total += int(diff_mod * ((50 * lvl_mod*lvl)+50))
-    return total
+        total += diff_mod * ((50 * lvl_mod*(lvl+1))+50)
+    return int(total)
 
 # Check valid level range
 # returns 0 on success, 1 on failure
