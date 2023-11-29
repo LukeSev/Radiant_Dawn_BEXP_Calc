@@ -21,7 +21,7 @@ from PyQt6.QtWidgets import (
     QDialogButtonBox,
     QSpacerItem,
     QRadioButton,
-    QCheckBox
+    QCheckBox,
 )
 from PyQt6 import (
     QtGui, 
@@ -74,16 +74,20 @@ LTBLUE  =   "#b8e0f5"
 LTTAN   =   "#faf2cd"
 
 # Colors to be passed to QtQui.Color(R,G,B)
-COL_LTGRAY  =   (212,212,212)
-COL_WHT     =   (0,0,0)
+COL_LTGRAY      =   (212,212,212)
+COL_WHT         =   (0,0,0)
+COL_BEXP_GREEN  =   (2,249,2)
 
 # Specific colors for various types of elements
 SEP_COL     =   COL_WHT
 
 # Music Defaults
-BGM             =   'Audio/FE_RD_76_The_Task_at_Hand.mp3'
+BGM             =   'Resources/BGM.mp3'
 BGM_VOL         =   0.1
 BGM_LOOPS       =   -1      # Infinite Loops
+
+# Images
+APP_ICON        =   'Resources/AppIcon.png'
 
 # Mode for button event handling
 MODE_STATS      =   0

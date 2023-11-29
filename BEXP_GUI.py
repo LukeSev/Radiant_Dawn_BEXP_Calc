@@ -37,6 +37,7 @@ class BEXP_Window(QMainWindow):
     def initUI(self):
         # Initialize window and basic layout
         self.setWindowTitle('Radiant Dawn BEXP Calculator')
+        # self.setStyleSheet("background-color: #b5b5b5;")
         self.setFixedSize(WIDTH, HEIGHT)
         self.generalLayout = QVBoxLayout()
         centralWidget = QWidget(self)
@@ -105,6 +106,7 @@ class BEXP_Window(QMainWindow):
         self.bexpCostLbl = create_label("TOTAL BEXP COST:", RIGHT, TITLE_FONT, HEADING_SZ)
         self.bexpCostDisplay.addWidget(self.bexpCostLbl)
         self.totalBexpCost = create_label(str(0), LEFT, TITLE_FONT, HEADING_SZ)
+        self.totalBexpCost.setStyleSheet("QLabel{color: #02db02;}")
         self.bexpCostDisplay.addWidget(self.totalBexpCost)
         self.generalLayout.addLayout(self.bexpCostDisplay)
 

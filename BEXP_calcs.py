@@ -1,4 +1,4 @@
-
+import math
 
 # Valid Level Range
 MIN_LEVEL       =   1
@@ -32,8 +32,12 @@ def calc_bexp_cost(start_lvl, end_lvl, lvl_mod, diff_mod):
     # Calculate total BEXP cost by summing BEXP cost at each level
     total = 0
     for lvl in range(start_lvl, end_lvl):
-        total += diff_mod * ((50 * lvl_mod*(lvl+1))+50)
-    return int(total)
+        total += diff_mod * ((50 * (lvl_mod*(lvl)+1))+50)
+    # Last minute rounding or sumn idk
+    if((total - int(total) > 0.5)):
+        return math.ceil(total)
+    else:
+        return math.floor(total)
 
 # Check valid level range
 # returns 0 on success, 1 on failure
