@@ -1,7 +1,7 @@
 # Radiant Dawn BEXP Calculator #
 This is a tool to help you calculate BEXP level-up costs in Fire Emblem: Radiant Dawn.
 
-In Radiant Dawn, BEXP (Bonus EXP) is earned in various ways throughout the game. BEXP can be a very important tool in powering up your units and the BEXP required to level up a particular units depends on a number of factors, namely: 
+In Radiant Dawn, BEXP (Bonus EXP) is earned in various ways throughout the game. BEXP can be a very important tool in powering up your units and the BEXP required to level up a particular unit depends on a number of factors, namely: 
 - Difficulty Mode
 - Total Level (accounting for Promotion Tier)
 - Race (Laguz or Beorc)
