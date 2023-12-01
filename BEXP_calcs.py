@@ -41,7 +41,8 @@ def calc_bexp_cost(start_lvl, end_lvl, lvl_mod, diff_mod, race):
     total = 0
     for lvl in range(start_lvl, end_lvl):
         total += diff_mod * ((50 * (lvl_mod*(lvl)+1))+50)
-    # Last minute rounding or sumn idk
+    # Last minute rounding or sumn idk 
+    # (refined through testing/comparing to real game)
     if((total - int(total) > 0.5)):
         return math.ceil(total)
     else:

@@ -38,7 +38,6 @@ class BEXP_Window(QMainWindow):
     def initUI(self):
         # Initialize window and basic layout
         self.setWindowTitle('Radiant Dawn BEXP Calculator')
-        # self.setStyleSheet(f"background-color: {LTGRAY};")
         self.setFixedSize(WIDTH, HEIGHT)
         self.generalLayout = QVBoxLayout()
         centralWidget = QWidget(self)
@@ -50,30 +49,27 @@ class BEXP_Window(QMainWindow):
         self.EndLvlTier = 1
         self.createDropdowns()
 
-
+        # Generate Starting Tier/Level forms, defaulting to Tier 1 Beorc
         startLvlForm = QHBoxLayout()
         startLvlForm.addWidget(create_label("Starting Level:", RIGHT, LBL_FONT, HEADING_SZ), 4)
         self.startTierDropdowns = QStackedWidget()
-        # self.startTierDropdown = self.start_tier_dropdown_beorc
         self.startTierDropdowns.addWidget(self.start_tier_dropdown_beorc)
         self.startTierDropdowns.addWidget(self.start_tier_dropdown_laguz)
         startLvlForm.addWidget(self.startTierDropdowns, 2)
-        # self.startLvlDropdown = self.start_lvl_dropdown_beorc
         self.startLvlDropdowns = QStackedWidget()
         self.startLvlDropdowns.addWidget(self.start_lvl_dropdown_beorc)
         self.startLvlDropdowns.addWidget(self.start_lvl_dropdown_laguz)
         startLvlForm.addWidget(self.startLvlDropdowns, 3)
         self.generalLayout.addLayout(startLvlForm)
 
+        # Generate Ending Tier/Level forms, defaulting to Tier 1 Beorc
         endLvlForm = QHBoxLayout()
         endLvlForm.addWidget(create_label("Ending Level:", RIGHT, LBL_FONT, HEADING_SZ), 4)
         self.endTierDropdowns = QStackedWidget()
-        # self.endTierDropdown = self.end_tier_dropdown_beorc
         self.endTierDropdowns.addWidget(self.end_tier_dropdown_beorc)
         self.endTierDropdowns.addWidget(self.end_tier_dropdown_laguz)
         endLvlForm.addWidget(self.endTierDropdowns, 2)
         self.endLvlDropdowns = QStackedWidget()
-        # self.endLvlDropdown = self.end_lvl_dropdown_beorc
         self.endLvlDropdowns.addWidget(self.end_lvl_dropdown_beorc)
         self.endLvlDropdowns.addWidget(self.end_lvl_dropdown_laguz)
         endLvlForm.addWidget(self.endLvlDropdowns, 3)
@@ -85,6 +81,7 @@ class BEXP_Window(QMainWindow):
         diffLbl = create_label("Difficulty:", LEFT, LBL_FONT, LBL_SIZE)
         difficultyOptions.addWidget(diffLbl)
 
+        # Use radios, only one difficulty mode can be selected at a time
         self.radio = QRadioButton("Easy", self)
         self.radio.toggled.connect(self.updateDifficulty)
         difficultyOptions.addWidget(self.radio)
@@ -100,6 +97,7 @@ class BEXP_Window(QMainWindow):
 
         self.diffMod = DIFF_MOD_NORMAL
 
+        # Generate Laguz Checker Box to adjust Tier/Level Ranges
         self.laguzCheck = QCheckBox(text="Laguz?")
         self.laguzCheck.pressed.connect(self.updateDropdowns)
         difficultyOptions.addWidget(self.laguzCheck)
@@ -131,15 +129,15 @@ class BEXP_Window(QMainWindow):
             music = BGM
         self.music_player = MusicPlayer(music)
 
-        # self.center()
         self.show()
-        # self.music_player.play_BGM(BGM_VOL, BGM_LOOPS)
+
 
     def initTimer(self):
         # Creates single-shot delay for welcome message
         QTimer.singleShot(DELAY, self.welcome_dlg.exec)
         QTimer.singleShot(DELAY, self.music_player.play_BGM)
 
+    # Track changes in Dropdown menus
     def updateStartLvlTier(self):
         match self.sender().text():
             case "Tier 1":
@@ -158,6 +156,7 @@ class BEXP_Window(QMainWindow):
             case "Tier 3":
                 self.endLvlTier = 2
 
+    # Track changes to difficulty picker
     def updateDifficulty(self):
         match self.sender().text():
             case "Easy":
@@ -167,6 +166,7 @@ class BEXP_Window(QMainWindow):
             case "Hard":
                 self.diffMod = DIFF_MOD_HARD
 
+    # The computational meat of the program
     def displayBexpCost(self):
         if(self.laguzCheck.isChecked()):
             race = RACE_LAGUZ
@@ -239,6 +239,7 @@ class BEXP_Window(QMainWindow):
         else:
             self.music_player.audio_output.setVolume(0)
 
+# Generic error message displayed as pop-up window
 def display_error_msg(error_msg):
     msg_box = QMessageBox()
     msg_box.setText(error_msg)

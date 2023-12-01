@@ -31,12 +31,19 @@ from PyQt6 import (
 from PyQt6.QtCore import (
     Qt,
     QUrl,
-    QTimer
+    QTimer,
+    QSize,
 )
 from PyQt6.QtGui import (
     QPixmap,
     QPalette, 
-    QFont
+    QFont,
+    QPainter,
+    QBrush,
+    QPen,
+    QFontMetrics,
+    QPainterPath,
+    QColor,
 )
 from PyQt6.QtMultimedia import (
     QSoundEffect,
@@ -74,6 +81,7 @@ RIGHT   =   Qt.AlignmentFlag.AlignRight
 LTBLUE  =   "#b8e0f5"
 LTTAN   =   "#faf2cd"
 LTGRAY  =   "#E6E6E6"
+LTGRAY2 =   "#E0E0E0"
 BEXP_G  =   "#02F902"
 DARK_G  =   "02DB02"
 
