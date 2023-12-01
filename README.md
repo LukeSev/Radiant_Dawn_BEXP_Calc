@@ -24,6 +24,7 @@ Option 2: Run as a Python Program
 - **Note**: For any python commands, the Mac version depends on which installation of python you have, which can be found using `python --version`. For example, if I have Python 3 installed, I would use `python3` and `pip3`. In the examples provided, I'll be assuming you have Python 3 for simplicity
 - Install [python](https://wiki.python.org/moin/BeginnersGuide/Download) on your machine
 - Download everything *except* **Releases** and **build.bat** (optional, but they won't be necessary)
+- Navigate to the directory in which you have everything downloaded
 - Install the required Packages found in requirements.txt. This can be done in the following ways:
   - Windows:    `pip install -r requirements.txt`
   - Mac:        `pip3 install -r requirements.txt`
