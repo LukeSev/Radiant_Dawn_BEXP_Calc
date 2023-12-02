@@ -57,8 +57,8 @@ from BEXP_calcs import *
 
 # Various Constant Definitions
 # Dimensions
-WIDTH       =   600
-HEIGHT      =   160
+WIDTH       =   640
+HEIGHT      =   180
 LINE_WIDTH  =   1
 IMG_WIDTH   =   int(0.4*WIDTH)
 IMG_HEIGHT  =   int(0.25*HEIGHT)
