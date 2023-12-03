@@ -41,7 +41,7 @@ class BEXP_Edit():
 
         # Create bexp box
         self.bexp_btn = QPushButton(text="Calculate Max Attainable Level with BEXP")
-        self.lbl = create_label("Total BEXP", RIGHT, LBL_FONT, HEADING_SZ)
+        self.lbl = create_label("Your BEXP", RIGHT, LBL_FONT, HEADING_SZ)
         self.bexp_box = create_exp_box()
         self.bexp_box.setAlignment(LEFT)
         self.bexp_box.setStyleSheet("QLineEdit{color: #02db02; font-weight: bold; font-size: 16;}")
@@ -138,7 +138,7 @@ class BEXP_Window(QMainWindow):
         # Create Difficulty Mode Options
         difficultyOptions = QHBoxLayout()
 
-        diffLbl = create_label("Difficulty:", LEFT, LBL_FONT, LBL_SIZE)
+        diffLbl = create_label("Difficulty:", LEFT, LBL_FONT, HEADING_SZ)
         difficultyOptions.addWidget(diffLbl)
 
         # Use radios, only one difficulty mode can be selected at a time

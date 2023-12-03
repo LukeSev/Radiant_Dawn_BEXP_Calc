@@ -55,23 +55,20 @@ def calc_bexp_cost(start_lvl, start_exp, end_lvl, end_exp, lvl_mod, diff_mod, ra
     total = 0
     # Calculate first (partial) level
     if(start_partial):
-        total += start_prop * diff_mod * ((50*(lvl_mod*(start_lvl)+1))+50)
+        total += (start_prop * diff_mod * ((50*(lvl_mod*(start_lvl)+1))+50))
         start_lvl += 1
 
     # Calculate total cost for all full levels
     for lvl in range(start_lvl, end_lvl):
-        total += diff_mod * ((50 * (lvl_mod*(lvl)+1))+50)
+        total += (diff_mod * ((50 * (lvl_mod*(lvl)+1))+50))
 
     # Calculate last (partial) level
     if(end_partial):
-        total += end_prop * diff_mod * ((50*(lvl_mod*(end_lvl)+1))+50)
+        total += (end_prop * diff_mod * ((50*(lvl_mod*(end_lvl)+1))+50))
 
     # Last minute rounding or sumn idk 
     # (refined through testing/comparing to real game)
-    if((total - int(total) > 0.5)):
-        return math.ceil(total)
-    else:
-        return math.floor(total)
+    return round(total)
     
 # Calculates max tier, level, and EXP reached with given amount of BEXP as input
 # Returns a string for displaying all 3 fields
