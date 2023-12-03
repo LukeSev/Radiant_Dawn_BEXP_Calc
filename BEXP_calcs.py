@@ -107,6 +107,7 @@ def calc_max_attainable_lvl(true_lvl, exp, bexp, lvl_mod, diff_mod, race):
             # Calc exp at final level
             bexp += next_lvl_cost
             final_exp = math.floor(100*(bexp/next_lvl_cost))
+            total_cost += math.ceil(next_lvl_cost*(final_exp/100))
         else:
             final_exp = 0
     else:

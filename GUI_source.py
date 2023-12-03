@@ -118,5 +118,6 @@ ODDS_OF_FUN     =   25      # The odds of having fun
 # Dialog Messages
 WELCOME         =   """ Welcome to the FE10 BEXP Cost Calculator!
 This program lets you calculate the total BEXP Cost for any (valid) pair of starting and ending levels! 
-Apart from level range, you can also set difficulty, if they're laguz, and even mute the BGM if you want!
-I hope you enjoy!"""
+You can also include how much BEXP you currently have and immediately see how much you have left!
+There's also an option to see how many levels you can get with a given amount of BEXP!
+Enjoy!"""

@@ -65,8 +65,8 @@ class BEXP_Edit():
 
 # Dialog that displays a message welcoming the user
 class Welcome_Dialog(QDialog):
-    def __init__(self, welcome_msg):
-        super().__init__()
+    def __init__(self, welcome_msg, parent=None):
+        super().__init__(parent)
         layout = QGridLayout()
 
         # Create welcome message
@@ -88,7 +88,7 @@ class BEXP_Window(QMainWindow):
     def __init__(self):
         super().__init__()
         self.initUI()
-        self.welcome_dlg = Welcome_Dialog(WELCOME)
+        self.welcome_dlg = Welcome_Dialog(WELCOME, self)
         self.initTimer()
 
     def initUI(self):
@@ -194,8 +194,14 @@ class BEXP_Window(QMainWindow):
             music = BGM
         self.music_player = MusicPlayer(music)
 
+        self.center()
         self.show()
 
+    def center(self):
+        qRect = self.frameGeometry()
+        center = self.screen().availableGeometry().center()
+        qRect.moveCenter(center)
+        self.move(qRect.topLeft())
 
     def initTimer(self):
         # Creates single-shot delay for welcome message
