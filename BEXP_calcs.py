@@ -96,13 +96,11 @@ def calc_max_attainable_lvl(true_lvl, exp, bexp, lvl_mod, diff_mod, race):
             exp_prop = 1
         next_lvl_cost = exp_prop * diff_mod * ((50*(lvl_mod*(final_lvl)+1))+50)
         bexp -= next_lvl_cost
-        # print(f"level: {final_lvl} | next_lvl_cost: {next_lvl_cost} | BEXP Left: {bexp}\n")
         while((bexp >= 0) and (final_lvl < max_true_lvl)):
             final_lvl += 1
             total_cost += next_lvl_cost
             next_lvl_cost = diff_mod * ((50*(lvl_mod*(final_lvl)+1))+50)
             bexp -= next_lvl_cost
-            # print(f"level: {final_lvl} | next_lvl_cost: {next_lvl_cost} | BEXP Left: {bexp}\n")
         if(final_lvl < max_true_lvl):
             # Calc exp at final level
             bexp += next_lvl_cost

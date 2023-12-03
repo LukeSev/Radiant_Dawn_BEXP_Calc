@@ -241,7 +241,7 @@ class BEXP_Window(QMainWindow):
         if(bexp_cost < 0):
             display_error_msg("Invalid level range selected, please try again.")
             bexp_cost = 0
-        if(self.bexp_input.bexp_box.text == ""):
+        if(len(self.bexp_input.bexp_box.text()) < 1):
             self.totalBexpCost.setText(str(bexp_cost))
         elif(self.bexp_input.bexp < bexp_cost):
             self.totalBexpCost.setText(f"{str(bexp_cost)} (You don't have enough BEXP!)")
@@ -265,13 +265,21 @@ class BEXP_Window(QMainWindow):
     # Creates all lvl/tier dropdowns
     def createDropdowns(self):
         self.start_lvl_dropdown_beorc = createLvlDropdown(MAX_DISP_LVL_BEORC)
+        self.start_lvl_dropdown_beorc.currentTextChanged.connect(self.resetStartExpBox)
         self.start_lvl_dropdown_laguz = createLvlDropdown(MAX_DISP_LVL_LAGUZ)
+        self.start_lvl_dropdown_laguz.currentTextChanged.connect(self.resetStartExpBox)
         self.start_tier_dropdown_beorc = createTierDropdown(MAX_TIERS_BEORC)
+        self.start_tier_dropdown_beorc.currentTextChanged.connect(self.resetStartExpBox)
         self.start_tier_dropdown_laguz = createTierDropdown(MAX_TIERS_LAGUZ)
+        self.start_tier_dropdown_laguz.currentTextChanged.connect(self.resetStartExpBox)
         self.end_lvl_dropdown_beorc = createLvlDropdown(MAX_DISP_LVL_BEORC)
+        self.end_lvl_dropdown_beorc.currentTextChanged.connect(self.resetEndExpBox)
         self.end_lvl_dropdown_laguz = createLvlDropdown(MAX_DISP_LVL_LAGUZ)
+        self.end_lvl_dropdown_laguz.currentTextChanged.connect(self.resetEndExpBox)
         self.end_tier_dropdown_beorc = createTierDropdown(MAX_TIERS_BEORC)
+        self.end_tier_dropdown_beorc.currentTextChanged.connect(self.resetEndExpBox)
         self.end_tier_dropdown_laguz = createTierDropdown(MAX_TIERS_LAGUZ)
+        self.end_tier_dropdown_laguz.currentTextChanged.connect(self.resetEndExpBox)
     
     # Updates dropdown when switching between laguz and beorc
     def updateDropdowns(self):
@@ -288,6 +296,8 @@ class BEXP_Window(QMainWindow):
             self.endTierDropdowns.setCurrentIndex(RACE_LAGUZ)
             self.endLvlDropdowns.setCurrentIndex(RACE_LAGUZ)
         self.resetDropdowns()
+        self.resetStartExpBox()
+        self.resetEndExpBox()
 
     # Resets dropdowns to have first item selected
     def resetDropdowns(self):
@@ -305,6 +315,12 @@ class BEXP_Window(QMainWindow):
             self.music_player.audio_output.setVolume(BGM_VOL)
         else:
             self.music_player.audio_output.setVolume(0)
+
+    def resetStartExpBox(self):
+        reset_exp_box(self.startExpBox.exp_box)
+
+    def resetEndExpBox(self):
+        reset_exp_box(self.endExpBox.exp_box)
 
 def create_label(text, alignment, font, size):
     label = QLabel()
@@ -331,7 +347,7 @@ def create_exp_box():
     return exp_box
 
 def reset_exp_box(exp_box):
-    exp_box.setText(str(0))
+    exp_box.setText("")
 
 # Generic error message displayed as pop-up window
 def display_error_msg(error_msg):
